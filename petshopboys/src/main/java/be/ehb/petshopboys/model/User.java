@@ -14,11 +14,6 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    @NotBlank(message = "Username is required.")
-    @Size(min = 3, max = 20, message = "Username must be between 3 and 20 characters long.")
-    private String username;
-
-    @Column(nullable = false, unique = true)
     @NotBlank(message = "Email is required.")
     @Email(message = "Email should be valid.")
     private String email;
@@ -39,14 +34,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
