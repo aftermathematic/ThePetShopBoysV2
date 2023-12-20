@@ -1,4 +1,4 @@
-package be.ehb.ThePetShopBoysV2;
+package be.ehb.petshopboys;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

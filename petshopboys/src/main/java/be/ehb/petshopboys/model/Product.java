@@ -1,4 +1,4 @@
-package be.ehb.ThePetShopBoysV2.model;
+package be.ehb.petshopboys.model;
 
 
 import jakarta.persistence.*;
@@ -81,4 +81,20 @@ public class Product {
         this.category = category;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product product)) return false;
+        return id != null && id.equals(product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + ", price=" + price + ", categoryId=" + (category != null ? category.getId() : "null") + '}';
+    }
 }

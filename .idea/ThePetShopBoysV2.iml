@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
   <component name="AdditionalModuleElements">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../PetShopBoys_v2" />
+  </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="bdbc8d90-6003-41a8-aff2-05647ef3ec83" />
   </component>
 </module>

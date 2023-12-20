@@ -1,4 +1,4 @@
-package be.ehb.ThePetShopBoysV2.model;
+package be.ehb.petshopboys.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -31,7 +31,6 @@ public class Category {
         // Default constructor
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -64,4 +63,20 @@ public class Category {
         this.products = products;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Category category)) return false;
+        return id != null && id.equals(category.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" + "id=" + id + ", name='" + name + '\'' + ", description='" + description + '\'' + ", productsCount=" + products.size() + '}';
+    }
 }
