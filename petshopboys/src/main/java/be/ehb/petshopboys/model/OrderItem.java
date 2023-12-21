@@ -13,7 +13,7 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
@@ -30,17 +30,15 @@ public class OrderItem {
     @Min(value = 1, message = "Quantity must be at least 1.")
     private Integer quantity;
 
-    // Constructor
     public OrderItem() {
         // Default constructor
     }
 
-    // Getters and Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,9 +66,7 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    // Method to calculate total price for this order item
     public BigDecimal getTotalPrice() {
-        // Assuming 'Product' has a 'price' field; otherwise replace with a constant or another way to obtain the price value.
         return product.getPrice().multiply(BigDecimal.valueOf(quantity));
     }
 
