@@ -11,6 +11,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+
 
 @Controller
 public class IndexController {
@@ -35,33 +38,30 @@ public class IndexController {
             products = productDAO.findAllOrderByNameAsc();
         }
         model.addAttribute("products", products);
-        return "category";
+        return "index";
     }
+
+    @PostMapping("/cart")
+    public String addToCart(@ModelAttribute("product") Product product, ModelMap map) {
+        map.addAttribute("product", product);
+
+
+
+        String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
+
+        // Add the session ID to the model
+        map.addAttribute("sessionId", sessionId);
+
+
+        return "cart";
+    }
+
 
     @ModelAttribute("allCategories")
     public Iterable<Category> findAllCategories() {
         return categoryDAO.findAllCategoryByNameAsc();
     }
 
-
-
-
-
-
-
-
-
-
-
-    @GetMapping(value = {"/categories"})
-    public String showCategories(ModelMap map) {
-        return "categories";
-    }
-
-    @GetMapping(value = {"/products"})
-    public String showProducts(ModelMap map) {
-        return "products";
-    }
 
     @GetMapping(value = {"/cart"})
     public String showCart(ModelMap map) {
